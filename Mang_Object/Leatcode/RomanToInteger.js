@@ -9,22 +9,17 @@ const romanArray = [
 ];
 //Can't use "return" breakout forEach
 function romanCharToInteger(charRoman) {
-  var result = NaN;
-  romanArray.forEach((element) => {
-    if (charRoman == element[0]) {
-      result = element[1];
-    }
-  });
-  return result;
+  for (let element of romanArray) {
+    if (element[0] == charRoman) return element[1];
+  }
+  return NaN;
 }
-console.log(romanCharToInteger("I"));
 
 var romanToInt = function (s) {
   var beforeValue = undefined;
   var integer = 0;
-  for (let index = 0; index < s.length; index++) {
-    const element = s[index];
-    var valueChar = romanCharToInteger(element);
+  for (let element of s) {
+    var valueChar = romanCharToInteger(element[0]);
     if (valueChar == NaN) return NaN;
     else {
       integer += valueChar;
@@ -41,3 +36,4 @@ var romanToInt = function (s) {
   }
   return integer;
 };
+console.log(romanToInt("IV"));
