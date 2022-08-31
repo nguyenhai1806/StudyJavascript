@@ -7,13 +7,17 @@ const romanArray = [
   ["D", 500],
   ["M", 1000],
 ];
+//Can't use "return" breakout forEach
 function romanCharToInteger(charRoman) {
-  for (let index = 0; index < romanArray.length; index++) {
-    const element = romanArray[index];
-    if (charRoman == element[0]) return element[1];
-  }
-  return NaN;
+  var result = NaN;
+  romanArray.forEach((element) => {
+    if (charRoman == element[0]) {
+      result = element[1];
+    }
+  });
+  return result;
 }
+console.log(romanCharToInteger("I"));
 
 var romanToInt = function (s) {
   var beforeValue = undefined;
@@ -37,4 +41,3 @@ var romanToInt = function (s) {
   }
   return integer;
 };
-console.log(romanToInt("MCMXCIV"));
