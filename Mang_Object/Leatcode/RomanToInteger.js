@@ -9,7 +9,8 @@ symbols = {
 };
 var romanToInt = function (s) {
   var value = 0;
-  for (let i = 0; i < s.length; i += 1) {
+  var arrayLength = s.length;
+  for (let i = 0; i < arrayLength; i += 1) {
     valueRomanChar = symbols[s[i]];
     if (valueRomanChar < symbols[s[i + 1]]) value -= valueRomanChar;
     else value += valueRomanChar;

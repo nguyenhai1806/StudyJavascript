@@ -12,5 +12,3 @@ var isPalindrome = function (head) {
   }
   return result;
 };
-
-console.log(isPalindrome(head));
