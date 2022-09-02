@@ -1,30 +1,11 @@
 var canConstruct = function (ransomNote, magazine) {
-  var minLength = 1;
-  var maxLength = 100000;
-  var magazineObject = {};
-  for (const char of magazine) {
-    var flag = false;
-    for (const key in magazineObject) {
-      if (char == key) {
-        magazineObject[char] = magazineObject[char] + 1;
-        flag = true;
-        break;
-      }
-    }
-    if (flag == false) magazineObject[char] = 1;
-  }
+  if (ransomNote.length > magazine.length) return false;
 
+  let magazineClone = magazine;
   for (const char of ransomNote) {
-    var hasCharInObject = false;
-    for (const key in magazineObject) {
-      if (char === key) {
-        if (magazineObject[char] > 0) {
-          magazineObject[char]--;
-          hasCharInObject = true;
-        } else return false;
-      }
-    }
-    if (hasCharInObject == false) return false;
+    if (magazineClone.indexOf(char) != -1) {
+      magazineClone = magazineClone.replace(char, "");
+    } else return false;
   }
   return true;
 };
