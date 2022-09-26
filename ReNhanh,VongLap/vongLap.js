@@ -128,9 +128,3 @@ function arrToObj(array = [[]]) {
   return object;
 }
 
-// Expected results:
-var arr = [
-  ["name", "Sơn Đặng"],
-  ["age", 18],
-];
-console.log(arrToObj());
