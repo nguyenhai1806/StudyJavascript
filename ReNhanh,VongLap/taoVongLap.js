@@ -16,24 +16,24 @@ var students = [
 ];
 
 //! Duyệt qua từng phần tử
-// students.forEach((student) => {
-//   if (student.mark > 5) {
-//     console.log(student);
-//   }
-// });
+students.forEach((student) => {
+  if (student.mark > 5) {
+    console.log(student);
+  }
+});
 
-// Array.prototype.forEach2 = function (callback) {
-//   var length = this.length;
-//   for (var i = 0; i < length; i++) {
-//     callback(this[i], i, this);
-//   }
-// };
+Array.prototype.forEach2 = function (callback) {
+  var length = this.length;
+  for (var i = 0; i < length; i++) {
+    callback(this[i], i, this);
+  }
+};
 
-// students.forEach2((student) => {
-//   if (student.mark > 5) {
-//     console.log(student);
-//   }
-// });
+students.forEach2((student) => {
+  if (student.mark > 5) {
+    console.log(student);
+  }
+});
 console.log("");
 
 //! Kiểm tra tất cả phần tử thoả điều kiện
@@ -136,8 +136,84 @@ console.log("");
 // });
 console.log("");
 
+//! Tao ham map
+// Array.prototype.myMap = function(cb) {
+//   var result = [];
+// var length = this.length;
+// for(var i = 0; i < length; i++){
+//   result.push(cb(this[i],i,this));
+// }
+// return result;
+// }
+
+// //Expected results
+// const numbers = [1, 2, 3];
+
+// console.log(numbers.myMap(function (number) {
+//     return number * 2;
+// })) // Output: [2, 4, 6]
+
+// console.log(numbers.myMap(function (number, index) {
+//     return number * index;
+// })) // Output: [0, 2, 6] 
+console.log("");
+
 //! reduce
-var sumMark = students.reduce((accumulator, currenValue) => {
-  return accumulator + currenValue.mark;
-});
-console.log(sumMark);
+// var numbersReduce = [12, 344, 53, 45, 32, 22, 345, 64, 44];
+// var result = numbersReduce.reduce((accumulator, currentValue) => {
+//   return accumulator + currentValue;
+// });
+// console.log(result);
+
+// var topics = [
+//   {
+//     topic: "Frontend",
+//     courses: [
+//       {
+//         id: 1,
+//         name: "Javascript",
+//       },
+//       {
+//         id: 2,
+//         name: "HTML CSS",
+//       },
+//     ],
+//   },
+//   {
+//     topic: "Backend",
+//     courses: [
+//       {
+//         id: 3,
+//         name: "NodeJS",
+//       },
+//       {
+//         id: 4,
+//         name: "PHP",
+//       },
+//     ],
+//   },
+// ];
+
+// var courses = topics.reduce((accumulator, currentValue) => {
+//   return accumulator.concat(currentValue.courses);
+// }, []);
+
+// console.log(courses);
+
+// var htmlscript = courses.map((course) => {
+//   return `
+//     <div>
+//       <h2>${course.name}</h2>
+//     </div>
+//     `;
+// }).join('');
+
+// console.log(htmlscript);
+console.log("")
+
+var courses = ["JS","HTML CSS"];
+courses.push(null,undefined)
+courses.length = 10
+courses.forEach((value) =>{
+  console.log(value);
+})
