@@ -1,4 +1,4 @@
-var numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+// var numbers = [1, 2, 3, 4, 5, 6, 7, 8];
 var languages = ["Java", "Javascipt222", "Python", "Cshap"];
 
 function Student(name, birthday, avatar, mark) {
@@ -11,49 +11,56 @@ var students = [
   new Student("Nguyễn Duy Hải", new Date(2000, 12, 25), "1.jpg", 5),
   new Student("Nguyễn Văn Khải", new Date(2001, 12, 25), "2.jpg", 4.5),
   new Student("Nguyễn Duy Khánh", new Date(2002, 12, 25), "3.jpg", 6),
-  new Student("Huỳnh Văn Huy", new Date(2003, 12, 25), "5.jpg", 9.5),
+  new Student("Huỳnh Văn Huy", new Date(2010, 12, 25), "5.jpg", 9.5),
   new Student("Nguyễn Đức Tài", new Date(1998, 12, 25), "6.jpg", 8.5),
 ];
 
 //! Duyệt qua từng phần tử
-students.forEach((student) => {
-  if (student.mark > 5) {
-    console.log(student);
-  }
-});
+// students.forEach((student) => {
+//   if (student.mark > 5) {
+//     console.log(student);
+//   }
+// });
 
-Array.prototype.forEach2 = function (callback) {
-  var length = this.length;
-  for (var i = 0; i < length; i++) {
-    callback(this[i], i, this);
-  }
-};
-
-students.forEach2((student) => {
-  if (student.mark > 5) {
-    console.log(student);
-  }
-});
+// Array.prototype.forEach2 = function (callback) {
+//   for(const index in this){
+//     if(this.hasOwnProperty(index)){
+//       callback(this[index],index,this);
+//     }
+//   }
+// };
+// students.length = 10;
+// var count = 0;
+// students.forEach2((student) => {
+//   count++;
+//   if (student.mark > 5) {
+//     console.log(student);
+//   }
+// });
 console.log("");
 
 //! Kiểm tra tất cả phần tử thoả điều kiện
-// var sinhvien = students.every(function checkBirthday(student) {
-//   var now = new Date();
-//   return now.getFullYear() - student.birthday.getFullYear() > 17;
-// });
+var sinhvien = students.every(function checkBirthday(student) {
+  var now = new Date();
+  return now.getFullYear() - student.birthday.getFullYear() > 17;
+});
 
-// Array.prototype.every2 = function (callback) {
-//   var length = this.length;
-//   for (var i = 0; i < length; i++) {
-//     if (callback(this[i], i, this) == false) return false;
-//   }
-//   return true;
-// };
+Array.prototype.every2 = function (callback) {
+  if((typeof callback) == 'function')
+  {
+    for(const index in this){
+      if(this.hasOwnProperty(index)){
+        if(callback(this[index],index,this) == false) return false; 
+      }
+    }
+    return true;
+  }
+};
 
-// var sinhvien = students.every2((student) => {
-//   var now = new Date();
-//   return now.getFullYear() - student.birthday.getFullYear() > 15;
-// });
+var sinhvien = students.every2((student) => {
+  var now = new Date();
+  return now.getFullYear() - student.birthday.getFullYear() > 15;
+});
 console.log("");
 
 //! Kiểm tra tồn tại phần tử thoả điều kiện
@@ -63,9 +70,9 @@ console.log("");
 // console.log(result);
 
 // Array.prototype.some2 = function (callback) {
-//   var length = this.length;
-//   for (var i = 0; i < length; i++) {
-//     if (callback(this[i], i, this) == true) return true;
+//   for (const key in this) {
+//     if (this.hasOwnProperty(key) == true) 
+//       if(callback(this[index],index,this)) return true;
 //   }
 //   return false;
 // };
@@ -159,61 +166,55 @@ console.log("");
 console.log("");
 
 //! reduce
-// var numbersReduce = [12, 344, 53, 45, 32, 22, 345, 64, 44];
-// var result = numbersReduce.reduce((accumulator, currentValue) => {
-//   return accumulator + currentValue;
-// });
-// console.log(result);
+var numbersReduce = [12, 344, 53, 45, 32, 22, 345, 64, 44];
+// Array.prototype.testMethod = function(){}
+var result = numbersReduce.reduce((accumulator, currentValue) => {
+  return accumulator + currentValue;
+});
+console.log(result);
 
-// var topics = [
-//   {
-//     topic: "Frontend",
-//     courses: [
-//       {
-//         id: 1,
-//         name: "Javascript",
-//       },
-//       {
-//         id: 2,
-//         name: "HTML CSS",
-//       },
-//     ],
-//   },
-//   {
-//     topic: "Backend",
-//     courses: [
-//       {
-//         id: 3,
-//         name: "NodeJS",
-//       },
-//       {
-//         id: 4,
-//         name: "PHP",
-//       },
-//     ],
-//   },
-// ];
+var topics = [
+  {
+    topic: "Frontend",
+    courses: [
+      {
+        id: 1,
+        name: "Javascript",
+      },
+      {
+        id: 2,
+        name: "HTML CSS",
+      },
+    ],
+  },
+  {
+    topic: "Backend",
+    courses: [
+      {
+        id: 3,
+        name: "NodeJS",
+      },
+      {
+        id: 4,
+        name: "PHP",
+      },
+    ],
+  },
+];
 
-// var courses = topics.reduce((accumulator, currentValue) => {
-//   return accumulator.concat(currentValue.courses);
-// }, []);
+var courses = topics.reduce((accumulator, currentValue) => {
+  return accumulator.concat(currentValue.courses);
+}, []);
 
-// console.log(courses);
+console.log(courses);
 
-// var htmlscript = courses.map((course) => {
-//   return `
-//     <div>
-//       <h2>${course.name}</h2>
-//     </div>
-//     `;
-// }).join('');
+var htmlscript = courses.map((course) => {
+  return `
+    <div>
+      <h2>${course.name}</h2>
+    </div>
+    `;
+}).join('');
 
-// console.log(htmlscript);
-console.log("")
+console.log(htmlscript);
 
-var courses = ["JS","HTML CSS"];
-courses.push(null,undefined)
-courses.length = 10
-courses.forEach((value) =>{
-  console.log(value);
-})

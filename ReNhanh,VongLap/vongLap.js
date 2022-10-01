@@ -127,4 +127,3 @@ function arrToObj(array = [[]]) {
   }, {});
   return object;
 }
-
